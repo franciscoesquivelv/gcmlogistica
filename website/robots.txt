@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /tracking.html
+
+Sitemap: https://gcmlogistica.com/sitemap.xml
