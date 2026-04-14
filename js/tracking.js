@@ -73,13 +73,10 @@
       setLoading(true);
       hideResult();
 
-      // Tiempo mínimo de loading para que la transición se sienta intencional
-      const minDelay = new Promise((r) => setTimeout(r, 1800));
-
       if (currentMode === 'screen') {
-        await Promise.all([handleScreenLookup(correlativo), minDelay]);
+        await handleScreenLookup(correlativo);
       } else {
-        await Promise.all([handleEmailRequest(correlativo, email), minDelay]);
+        await handleEmailRequest(correlativo, email);
       }
 
       setLoading(false);
@@ -273,29 +270,12 @@
 
   /* ─── UI HELPERS ──────────────────────────────────────────────── */
   function setLoading(on) {
-    const txt     = document.querySelector('.trk-form__submit-text');
-    const ldr     = document.querySelector('.trk-form__submit-loader');
-    const btn     = document.querySelector('.trk-form__submit');
-    const overlay = document.getElementById('trkLoading');
-
+    const txt = document.querySelector('.trk-form__submit-text');
+    const ldr = document.querySelector('.trk-form__submit-loader');
+    const btn = document.querySelector('.trk-form__submit');
     if (txt) txt.style.display = on ? 'none'       : 'inline';
     if (ldr) ldr.style.display = on ? 'inline-flex' : 'none';
     if (btn) btn.disabled      = on;
-
-    if (!overlay) return;
-
-    if (on) {
-      overlay.style.display = 'flex';
-      overlay.classList.remove('trk-loading--hiding');
-    } else {
-      // Fade out with minimum display time for smooth UX
-      overlay.classList.add('trk-loading--hiding');
-      overlay.addEventListener('animationend', function handler() {
-        overlay.style.display = 'none';
-        overlay.classList.remove('trk-loading--hiding');
-        overlay.removeEventListener('animationend', handler);
-      });
-    }
   }
 
   function showResult(cardId) {
