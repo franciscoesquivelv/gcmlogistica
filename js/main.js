@@ -347,7 +347,7 @@
     const success = document.getElementById('cfSuccess');
     if (!form) return;
 
-    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyPwUNbC-Y_2tVTetKX8ENO7sEROOKDyqEj1f_6Ny1jIT88sj5SllQxl5z06T6rvYoW/exec';
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwwuXjehJoLlIoirEWTyncn7RE4K3IHKJuXRbsfRYY7ZXLycloC5ujPKZPpIyEelTGbew/exec';
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();

@@ -16,7 +16,7 @@
   /* ─── CONFIGURACIÓN ────────────────────────────────────────────── */
   const CONFIG = {
     // ⚠️ Pegar URL del Apps Script web app aquí (ver apps-script.gs)
-    APPS_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbyPwUNbC-Y_2tVTetKX8ENO7sEROOKDyqEj1f_6Ny1jIT88sj5SllQxl5z06T6rvYoW/exec',
+    APPS_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbwwuXjehJoLlIoirEWTyncn7RE4K3IHKJuXRbsfRYY7ZXLycloC5ujPKZPpIyEelTGbew/exec',
   };
 
   /* ─── PIPELINE DE ESTADOS ─────────────────────────────────────── */
