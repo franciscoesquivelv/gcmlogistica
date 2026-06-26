@@ -21,6 +21,23 @@
     initMobileMenu();
     initTrackingWidget();
     initContactForm();
+    initLeadTracking();
+  }
+
+  /* ─── LEAD TRACKING (GA4 events) ─────────────────────────── */
+  function initLeadTracking() {
+    // Clic en WhatsApp = lead potencial
+    document.querySelectorAll('a[href*="wa.me"]').forEach((a) => {
+      a.addEventListener('click', () => {
+        if (window.gtag) gtag('event', 'whatsapp_click', { canal: 'whatsapp' });
+      });
+    });
+    // Clic en correo
+    document.querySelectorAll('a[href^="mailto:"]').forEach((a) => {
+      a.addEventListener('click', () => {
+        if (window.gtag) gtag('event', 'email_click', { canal: 'correo' });
+      });
+    });
   }
 
   /* ─── HERO REVEAL ────────────────────────────────────────── */
@@ -366,6 +383,7 @@
 
       form.style.display = 'none';
       if (success) success.style.display = 'block';
+      if (window.gtag) gtag('event', 'generate_lead', { method: 'formulario_contacto' });
     });
   }
 
