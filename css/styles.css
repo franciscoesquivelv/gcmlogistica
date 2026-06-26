@@ -1555,3 +1555,56 @@ body::after {
   color: var(--gcm-blue-light);
   line-height: 1;
 }
+
+/* ── CAMBIOS VISIBLES ─────────────────────────────────────────── */
+
+/* Acento más vívido (el azul anterior se leía plano) */
+:root { --accent: #2767C0; --accent-hover: #3A7FD6; }
+.btn--primary { background: var(--accent); }
+.btn--primary:hover { background: var(--accent-hover); }
+/* La palabra clave del hero ahora destaca en acento */
+.hero__line--accent { color: var(--gcm-blue-light); }
+
+/* Manifiesto del hero: diferenciadores en monoespaciada con marca */
+.hero__manifest { display: flex; gap: 26px 30px; flex-wrap: wrap; margin-top: 38px; }
+.hero__manifest span {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gcm-steel);
+  position: relative;
+  padding-left: 16px;
+}
+.hero__manifest span::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 50%;
+  width: 6px; height: 6px;
+  background: var(--gcm-blue-light);
+  transform: translateY(-50%);
+}
+
+/* Marquesina de rutas: tipografía cinética = el corredor real en movimiento */
+.marquee {
+  overflow: hidden;
+  background: var(--gcm-black);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 18px 0;
+}
+.marquee__track {
+  display: flex;
+  width: max-content;
+  animation: marquee 42s linear infinite;
+}
+.marquee__track span {
+  font-family: var(--font-mono);
+  white-space: nowrap;
+  text-transform: uppercase;
+  font-size: clamp(16px, 2.4vw, 28px);
+  letter-spacing: 0.04em;
+  color: var(--gcm-steel);
+}
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .marquee__track { animation: none; } }
