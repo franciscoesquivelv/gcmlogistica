@@ -1608,3 +1608,40 @@ body::after {
 }
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) { .marquee__track { animation: none; } }
+
+/* ── HERO CON MAPA: el corredor CA→MX como identidad (sin foto stock) ── */
+.hero--map { background: radial-gradient(120% 100% at 74% 36%, #0d1d33 0%, var(--gcm-black) 64%); }
+.hero__map {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: flex-end;
+  pointer-events: none;
+}
+.hero__map-svg {
+  width: min(74vw, 800px);
+  height: auto;
+  transform: translateX(10%);
+  filter: drop-shadow(0 0 60px rgba(39, 103, 192, 0.22));
+}
+.hero--map .hero__overlay {
+  background: linear-gradient(90deg,
+    var(--gcm-black) 0%,
+    rgba(7,16,28,0.92) 32%,
+    rgba(7,16,28,0.30) 66%,
+    rgba(7,16,28,0) 100%);
+}
+.hero__map .map-country { fill: rgba(27,75,138,0.10); stroke: rgba(74,143,212,0.30); stroke-width: 1.2; }
+.hero__map .map-country--hq { fill: rgba(39,103,192,0.32); stroke: rgba(74,143,212,0.65); }
+.hero__map .map-route {
+  stroke: var(--gcm-blue-light); stroke-width: 1.8; stroke-dasharray: 6 5;
+  opacity: 0.75; animation: routeDash 24s linear infinite;
+}
+.hero__map .map-city { fill: var(--gcm-steel); stroke: var(--gcm-black); stroke-width: 1.2; }
+.hero__map .map-city--hq { fill: var(--gcm-blue-light); }
+.hero__map .map-city-pulse { fill: none; stroke: var(--gcm-blue-light); stroke-width: 1.5; opacity: 0.5; animation: pulse 2.6s ease infinite; }
+@media (max-width: 860px) {
+  .hero__map-svg { width: 132vw; transform: translateX(24%); opacity: 0.40; }
+  .hero--map .hero__overlay { background: linear-gradient(180deg, rgba(7,16,28,0.62) 0%, rgba(7,16,28,0.92) 70%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__map .map-route, .hero__map .map-city-pulse { animation: none; }
+}
