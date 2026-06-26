@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /tracking.html
 
-Sitemap: https://gcmlogistica.com/sitemap.xml
+Sitemap: https://gcm.com.sv/sitemap.xml

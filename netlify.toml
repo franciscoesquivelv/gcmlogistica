@@ -1,3 +1,43 @@
+# ─── Redirecciones 301: demanda heredada de TARIMAS → Onepack ───
+# El dominio gcm.com.sv era un sitio WordPress de tarimas (hasta Feb/Mar 2026).
+# Esas URLs hoy dan 404 pero Google aún las muestra. Las enviamos a Onepack
+# (negocio de tarimas) para recuperar al cliente y transferir autoridad SEO.
+[[redirects]]
+  from = "/tarimas-de-madera/"
+  to = "https://www.onepack.com.sv/pallets"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tarimas-de-madera"
+  to = "https://www.onepack.com.sv/pallets"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tarimas-plasticas/"
+  to = "https://www.onepack.com.sv/pallets"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tarimas-plasticas"
+  to = "https://www.onepack.com.sv/pallets"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tarimas/"
+  to = "https://www.onepack.com.sv/pallets"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tarimas"
+  to = "https://www.onepack.com.sv/pallets"
+  status = 301
+  force = true
+
 [[headers]]
   for = "/*"
   [headers.values]
