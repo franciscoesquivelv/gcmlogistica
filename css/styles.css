@@ -1609,39 +1609,56 @@ body::after {
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) { .marquee__track { animation: none; } }
 
-/* ── HERO CON MAPA: el corredor CA→MX como identidad (sin foto stock) ── */
-.hero--map { background: radial-gradient(120% 100% at 74% 36%, #0d1d33 0%, var(--gcm-black) 64%); }
+/* ── HERO CON MAPA: corredor CA→MX como identidad, look cinematográfico ── */
+.hero--map {
+  background:
+    radial-gradient(55% 48% at 70% 40%, rgba(39,103,192,0.22) 0%, transparent 62%),
+    radial-gradient(125% 115% at 78% 32%, #122a49 0%, #0a1626 44%, var(--gcm-black) 80%);
+}
 .hero__map {
   position: absolute; inset: 0;
   display: flex; align-items: center; justify-content: flex-end;
   pointer-events: none;
+  perspective: 1500px;
 }
 .hero__map-svg {
-  width: min(74vw, 800px);
+  width: min(72vw, 840px);
   height: auto;
-  transform: translateX(10%);
-  filter: drop-shadow(0 0 60px rgba(39, 103, 192, 0.22));
+  transform: rotateX(11deg) rotateY(-13deg) translateX(5%);
+  transform-origin: 72% 50%;
+  filter:
+    drop-shadow(0 36px 60px rgba(0,0,0,0.65))
+    drop-shadow(0 0 70px rgba(39,103,192,0.30));
 }
+/* Atmósfera: viñeta + degradado lateral → profundidad y legibilidad del texto */
 .hero--map .hero__overlay {
-  background: linear-gradient(90deg,
-    var(--gcm-black) 0%,
-    rgba(7,16,28,0.92) 32%,
-    rgba(7,16,28,0.30) 66%,
-    rgba(7,16,28,0) 100%);
+  background:
+    radial-gradient(78% 78% at 52% 46%, transparent 46%, rgba(3,8,15,0.64) 100%),
+    linear-gradient(90deg, var(--gcm-black) 0%, rgba(7,16,28,0.90) 30%, rgba(7,16,28,0.22) 64%, transparent 100%);
 }
-.hero__map .map-country { fill: rgba(27,75,138,0.10); stroke: rgba(74,143,212,0.30); stroke-width: 1.2; }
-.hero__map .map-country--hq { fill: rgba(39,103,192,0.32); stroke: rgba(74,143,212,0.65); }
+.hero__map .map-country { fill: rgba(27,75,138,0.12); stroke: rgba(74,143,212,0.34); stroke-width: 1.2; }
+.hero__map .map-country--hq { fill: rgba(39,103,192,0.42); stroke: rgba(120,180,240,0.85); }
 .hero__map .map-route {
-  stroke: var(--gcm-blue-light); stroke-width: 1.8; stroke-dasharray: 6 5;
-  opacity: 0.75; animation: routeDash 24s linear infinite;
+  stroke: var(--gcm-blue-light); stroke-width: 2; stroke-dasharray: 6 5;
+  opacity: 0.9;
+  filter: drop-shadow(0 0 6px rgba(74,143,212,0.85));
+  animation: routeDash 24s linear infinite;
 }
 .hero__map .map-city { fill: var(--gcm-steel); stroke: var(--gcm-black); stroke-width: 1.2; }
-.hero__map .map-city--hq { fill: var(--gcm-blue-light); }
-.hero__map .map-city-pulse { fill: none; stroke: var(--gcm-blue-light); stroke-width: 1.5; opacity: 0.5; animation: pulse 2.6s ease infinite; }
+.hero__map .map-city--hq { fill: #d3e4f8; filter: drop-shadow(0 0 9px rgba(74,143,212,0.95)); }
+.hero__map .map-city-pulse { fill: none; stroke: var(--gcm-blue-light); stroke-width: 1.5; opacity: 0.6; animation: pulse 2.6s ease infinite; }
 @media (max-width: 860px) {
-  .hero__map-svg { width: 132vw; transform: translateX(24%); opacity: 0.40; }
-  .hero--map .hero__overlay { background: linear-gradient(180deg, rgba(7,16,28,0.62) 0%, rgba(7,16,28,0.92) 70%); }
+  .hero__map { justify-content: center; }
+  .hero__map-svg { width: 150vw; transform: rotateX(16deg) rotateY(-6deg) translateY(-4%); opacity: 0.62; }
+  .hero--map .hero__overlay {
+    background:
+      radial-gradient(72% 55% at 58% 36%, rgba(39,103,192,0.18), transparent 62%),
+      linear-gradient(180deg, rgba(7,16,28,0.50) 0%, rgba(7,16,28,0.93) 74%);
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   .hero__map .map-route, .hero__map .map-city-pulse { animation: none; }
 }
+
+/* Fix: la imagen de "Nosotros" se queda dentro de su sección (no se mete en Contacto) */
+.about { overflow: hidden; }
