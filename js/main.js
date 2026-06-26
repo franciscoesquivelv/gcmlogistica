@@ -19,7 +19,6 @@
     initServiceCardTilt();
     initScrollProgress();
     initMobileMenu();
-    initTrackingWidget();
     initContactForm();
     initLeadTracking();
   }
@@ -317,44 +316,6 @@
         document.body.style.overflow = '';
         burger.querySelectorAll('span').forEach((s) => { s.style.transform = ''; s.style.opacity = ''; });
       });
-    });
-  }
-
-  /* ─── TRACKING WIDGET (homepage mini-form) ───────────────── */
-  function initTrackingWidget() {
-    const tabs = document.querySelectorAll('.tw-tab');
-    const emailField = document.getElementById('twEmailField');
-    const form = document.getElementById('twForm');
-    const result = document.getElementById('twResult');
-    if (!tabs.length || !form) return;
-
-    let currentMode = 'screen';
-
-    tabs.forEach((tab) => {
-      tab.addEventListener('click', () => {
-        tabs.forEach((t) => t.classList.remove('active'));
-        tab.classList.add('active');
-        currentMode = tab.dataset.mode;
-
-        if (emailField) {
-          emailField.style.display = currentMode === 'email' ? 'flex' : 'none';
-          emailField.querySelector('input').required = currentMode === 'email';
-        }
-      });
-    });
-
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const correlativo = document.getElementById('twCorrelativo')?.value.trim();
-      if (!correlativo) return;
-
-      if (currentMode === 'screen') {
-        // Redirect to full tracking page
-        window.location.href = `tracking.html?correlativo=${encodeURIComponent(correlativo)}`;
-      } else {
-        const email = document.getElementById('twEmail')?.value.trim();
-        window.location.href = `tracking.html?correlativo=${encodeURIComponent(correlativo)}&mode=email&email=${encodeURIComponent(email)}`;
-      }
     });
   }
 

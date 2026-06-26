@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /tracking.html
 
 Sitemap: https://gcm.com.sv/sitemap.xml

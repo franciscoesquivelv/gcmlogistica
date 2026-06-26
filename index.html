@@ -113,14 +113,6 @@
       },
       {
         "@type": "Question",
-        "name": "¿Cómo consulto el estado de mi envío con GCM?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Puede consultar el estado de su carga ingresando su correlativo LDF en la sección de consulta de envíos del sitio, y ver el estado en pantalla o recibir la actualización por correo."
-        }
-      },
-      {
-        "@type": "Question",
         "name": "¿GCM Logística trabaja con intermediarios?",
         "acceptedAnswer": {
           "@type": "Answer",
@@ -159,7 +151,6 @@
         <li><a href="#servicios" class="nav__link">Servicios</a></li>
         <li><a href="#cobertura" class="nav__link">Cobertura</a></li>
         <li><a href="#nosotros" class="nav__link">Nosotros</a></li>
-        <li><a href="tracking.html" class="nav__link">Consultar envío</a></li>
       </ul>
       <a href="#contacto" class="btn btn--nav">Hablemos</a>
       <button class="nav__burger" id="navBurger" aria-label="Menú">
@@ -174,7 +165,6 @@
       <li><a href="#servicios" class="nav__mobile-link">Servicios</a></li>
       <li><a href="#cobertura" class="nav__mobile-link">Cobertura</a></li>
       <li><a href="#nosotros" class="nav__mobile-link">Nosotros</a></li>
-      <li><a href="tracking.html" class="nav__mobile-link">Consultar envío</a></li>
       <li><a href="#contacto" class="btn btn--nav" style="display:inline-block;margin-top:8px">Hablemos</a></li>
     </ul>
   </div>
@@ -453,40 +443,6 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════════ TRACKING CTA ═══════════════════════════ -->
-  <section class="tracking-cta" id="tracking">
-    <div class="container">
-      <div class="tracking-cta__inner">
-        <div class="tracking-cta__info reveal-left">
-          <span class="eyebrow">Consulte su envío</span>
-          <h2 class="section-title">¿Dónde está<br>su carga?</h2>
-          <p class="tracking-cta__desc">Ingrese su correlativo LDF y consulte el estado de su envío en tiempo real, o reciba una actualización directamente en su correo.</p>
-          <a href="tracking.html" class="btn btn--primary">Ir a consulta completa →</a>
-        </div>
-        <div class="tracking-cta__form reveal-right">
-          <div class="tracking-widget">
-            <div class="tracking-widget__tabs">
-              <button class="tw-tab active" data-mode="screen">Ver en pantalla</button>
-              <button class="tw-tab" data-mode="email">Recibir por correo</button>
-            </div>
-            <form class="tw-form" id="twForm">
-              <div class="tw-field">
-                <label class="tw-label" for="twCorrelativo">Correlativo LDF</label>
-                <input class="tw-input" type="text" id="twCorrelativo" name="correlativo" placeholder="Ej. LDF-2025-0001" required autocomplete="off">
-              </div>
-              <div class="tw-field tw-field--email" id="twEmailField" style="display:none">
-                <label class="tw-label" for="twEmail">Correo electrónico</label>
-                <input class="tw-input" type="email" id="twEmail" name="email" placeholder="correo@empresa.com">
-              </div>
-              <button class="btn btn--primary btn--full" type="submit">Consultar</button>
-            </form>
-            <div class="tw-result" id="twResult"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ═══════════════════════════ CONTACT ═══════════════════════════ -->
   <section class="contact" id="contacto">
     <div class="container">
@@ -634,7 +590,6 @@
             <ul class="footer__links">
               <li><a href="#nosotros">Nosotros</a></li>
               <li><a href="#contacto">Contacto</a></li>
-              <li><a href="tracking.html">Consultar envío</a></li>
             </ul>
           </div>
           <div class="footer__col">
@@ -659,6 +614,5 @@
   </footer>
 
   <script src="js/main.js"></script>
-  <script src="js/tracking.js"></script>
 </body>
 </html>
