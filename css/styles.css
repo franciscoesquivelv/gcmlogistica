@@ -1478,3 +1478,80 @@ body::before {
   .hero__ctas .btn { width: 100%; justify-content: center; }
   .trk-result__header { flex-direction: column; gap: 16px; }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   REFINAMIENTO VISUAL — dirección editorial / ingenieril
+   Objetivo: que el sitio se sienta intencional y "hecho a mano",
+   no de plantilla. Tipografía técnica en metadatos, geometría
+   nítida (sin brillos difusos), fotografía tratada como un set.
+   ═══════════════════════════════════════════════════════════════ */
+:root {
+  --font-mono: ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+  /* Brillos difusos → anillos/bordes precisos (estética de ingeniería) */
+  --glow-blue:   0 0 0 1px var(--gcm-blue);
+  --shadow-card: none;
+  --shadow-btn:  none;
+  --radius:      2px;
+}
+
+/* Etiquetas y metadatos en monoespaciada = lectura técnica, deliberada */
+.eyebrow,
+.hero__eyebrow,
+.stat-item__label,
+.service-card__num,
+.footer__col-title,
+.map-label,
+.tag {
+  font-family: var(--font-mono);
+  font-weight: 400;
+}
+.eyebrow,
+.hero__eyebrow { color: var(--gcm-steel); letter-spacing: 0.24em; }
+.stat-item__label { letter-spacing: 0.16em; color: var(--gcm-steel); }
+.service-card__num { letter-spacing: 0.16em; }
+.footer__col-title { text-transform: uppercase; letter-spacing: 0.16em; }
+
+/* Navegación con etiquetas monoespaciadas en mayúsculas (estética de operación) */
+.nav__link {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+}
+
+/* Geometría nítida: esquinas rectas, cero sombra difusa */
+.btn,
+.btn--nav { border-radius: var(--radius); box-shadow: none; }
+.btn--primary:hover { box-shadow: none; transform: translateY(-1px); }
+.service-card { border-radius: 0; }
+.service-card:hover { box-shadow: 0 0 0 1px var(--gcm-blue); transform: translateY(-3px); }
+.tag { border-radius: 0; }
+
+/* Fotografía tratada como un set cohesivo (menos "stock", más editorial) */
+.hero__bg,
+.about__bg,
+.service-card__img {
+  filter: grayscale(0.42) contrast(1.07) brightness(0.9);
+}
+
+/* Grano sutil sobre todo el sitio: textura analógica que rompe la
+   perfección plana típica de los sitios generados por IA. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+}
+
+/* Pilares: numerales monoespaciados en lugar de íconos genéricos */
+.pillar__num {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  color: var(--gcm-blue-light);
+  line-height: 1;
+}
