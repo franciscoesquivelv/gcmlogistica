@@ -1662,3 +1662,338 @@ body::after {
 
 /* Fix: la imagen de "Nosotros" se queda dentro de su sección (no se mete en Contacto) */
 .about { overflow: hidden; }
+
+/* ═══════════════════════════════════════════════════════════════
+   PÁGINAS DE RUTA — Motor de rutas
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Breadcrumb */
+.breadcrumb {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gcm-steel);
+  margin-bottom: 28px;
+}
+.breadcrumb a { color: var(--gcm-steel); text-decoration: none; }
+.breadcrumb a:hover { color: var(--gcm-white); }
+.breadcrumb span { color: var(--gcm-blue-light); margin: 0 6px; }
+
+/* Hero compacto de ruta */
+.route-hero {
+  background:
+    radial-gradient(55% 48% at 68% 38%, rgba(39,103,192,0.18) 0%, transparent 60%),
+    radial-gradient(130% 120% at 75% 28%, #0e2240 0%, #080f1c 50%, var(--gcm-black) 82%);
+  padding: 140px 0 72px;
+  position: relative;
+  overflow: hidden;
+}
+.route-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--gcm-black) 0%, rgba(8,15,28,0.82) 35%, rgba(8,15,28,0.22) 70%, transparent 100%);
+  pointer-events: none;
+}
+.route-hero .container { position: relative; max-width: 780px; }
+.route-hero__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gcm-blue-light);
+  display: block;
+  margin-bottom: 20px;
+}
+.route-hero__h1 {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 5.5vw, 58px);
+  font-weight: 700;
+  line-height: 1.08;
+  color: var(--gcm-white);
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+}
+.route-hero__sub {
+  font-size: clamp(15px, 1.8vw, 18px);
+  color: var(--gcm-gray);
+  line-height: 1.65;
+  margin-bottom: 40px;
+  max-width: 560px;
+}
+.route-hero__ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+
+/* Barra de hechos rápidos */
+.route-facts {
+  background: var(--gcm-card);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 32px 0;
+}
+.route-facts__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 24px 40px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+.route-fact__label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gcm-steel);
+  display: block;
+  margin-bottom: 6px;
+}
+.route-fact__value {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--gcm-white);
+}
+
+/* Sección de contenido de ruta */
+.route-content {
+  padding: 80px 0;
+}
+.route-content .container {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 64px;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .route-content .container { grid-template-columns: 1fr; gap: 48px; }
+}
+.route-content__main h2 {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 3vw, 30px);
+  font-weight: 700;
+  color: var(--gcm-white);
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+}
+.route-content__main p {
+  font-size: 15px;
+  color: var(--gcm-gray);
+  line-height: 1.75;
+  margin-bottom: 20px;
+}
+.route-content__main ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 28px;
+}
+.route-content__main ul li {
+  font-size: 14px;
+  color: var(--gcm-gray);
+  padding: 8px 0 8px 20px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+.route-content__main ul li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 50%;
+  width: 6px; height: 6px;
+  background: var(--gcm-blue-light);
+  transform: translateY(-50%);
+}
+
+/* Sidebar de contacto rápido */
+.route-sidebar {
+  background: var(--gcm-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 32px;
+  position: sticky;
+  top: 100px;
+}
+.route-sidebar__title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--gcm-white);
+  margin-bottom: 8px;
+}
+.route-sidebar__sub {
+  font-size: 13px;
+  color: var(--gcm-steel);
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+.route-sidebar .btn { width: 100%; text-align: center; margin-bottom: 12px; }
+.route-sidebar__divider {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gcm-muted);
+  text-align: center;
+  margin: 16px 0;
+}
+.route-sidebar__email {
+  display: block;
+  font-size: 13px;
+  color: var(--gcm-steel);
+  text-decoration: none;
+  text-align: center;
+}
+.route-sidebar__email:hover { color: var(--gcm-white); }
+
+/* FAQ de ruta */
+.route-faq {
+  padding: 72px 0;
+  background: var(--gcm-dark);
+  border-top: 1px solid var(--border);
+}
+.route-faq .section-header { margin-bottom: 48px; }
+.route-faq__list { max-width: 780px; margin: 0 auto; }
+.route-faq__item {
+  border-bottom: 1px solid var(--border);
+  padding: 24px 0;
+}
+.route-faq__q {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--gcm-white);
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+.route-faq__a {
+  font-size: 14px;
+  color: var(--gcm-gray);
+  line-height: 1.75;
+}
+
+/* CTA final de ruta */
+.route-cta-section {
+  padding: 96px 0;
+  background: var(--gcm-navy);
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+.route-cta-section__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gcm-blue-light);
+  display: block;
+  margin-bottom: 20px;
+}
+.route-cta-section__title {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 4vw, 42px);
+  font-weight: 700;
+  color: var(--gcm-white);
+  margin-bottom: 16px;
+  letter-spacing: -0.015em;
+}
+.route-cta-section__sub {
+  font-size: 16px;
+  color: var(--gcm-gray);
+  margin-bottom: 40px;
+}
+.route-cta-section__ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+/* Nav en páginas de ruta apunta a raíz */
+.nav--route .nav__logo a { pointer-events: auto; }
+
+/* Enlace "← Volver" */
+.route-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gcm-steel);
+  text-decoration: none;
+  margin-bottom: 32px;
+}
+.route-back:hover { color: var(--gcm-white); }
+
+/* Sección de otras rutas */
+.route-related {
+  padding: 72px 0;
+  background: var(--gcm-black);
+  border-top: 1px solid var(--border);
+}
+.route-related .section-header { margin-bottom: 40px; }
+.route-related__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+.route-related__card {
+  display: block;
+  background: var(--gcm-card);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 20px 24px;
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+.route-related__card:hover {
+  border-color: var(--gcm-blue-light);
+  background: rgba(39,103,192,0.08);
+}
+.route-related__card-route {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gcm-white);
+  margin-bottom: 4px;
+}
+.route-related__card-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gcm-steel);
+}
+
+/* ── Coverage: subtle route links ────────────────────────────── */
+.coverage__routes {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+.coverage__routes-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gcm-muted);
+  margin-bottom: 10px;
+}
+.coverage__route-link {
+  display: block;
+  font-size: 13px;
+  color: var(--gcm-steel);
+  text-decoration: none;
+  padding: 4px 0;
+  transition: color 0.2s;
+}
+.coverage__route-link::before {
+  content: '→ ';
+  opacity: 0.35;
+}
+.coverage__route-link:hover {
+  color: var(--gcm-white);
+}
+.coverage__route-link:hover::before {
+  opacity: 0.7;
+}
+
+/* ── Route content intro paragraph ───────────────────────────── */
+.route-content__intro {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--gcm-white);
+  margin-bottom: 20px;
+}
