@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════
-   GCM LOGÍSTICA — Design System
+   GCM LOGÍSTICA: Design System
    Author: Claude Code
    ═══════════════════════════════════════════════════════════════ */
 
@@ -362,7 +362,7 @@ body::before {
   letter-spacing: -0.03em;
   color: var(--gcm-white);
   margin-bottom: 28px;
-  /* overflow intentionally NOT hidden — prevents descenders from clipping */
+  /* overflow intentionally NOT hidden: prevents descenders from clipping */
 }
 .hero__line {
   display: block;
@@ -1142,7 +1142,7 @@ body::before {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   REFINAMIENTO VISUAL — dirección editorial / ingenieril
+   REFINAMIENTO VISUAL: dirección editorial / ingenieril
    Objetivo: que el sitio se sienta intencional y "hecho a mano",
    no de plantilla. Tipografía técnica en metadatos, geometría
    nítida (sin brillos difusos), fotografía tratada como un set.
@@ -1299,7 +1299,7 @@ body::after {
 .about { overflow: hidden; }
 
 /* ═══════════════════════════════════════════════════════════════
-   PÁGINAS DE RUTA — Motor de rutas
+   PÁGINAS DE RUTA: Motor de rutas
    ═══════════════════════════════════════════════════════════════ */
 
 /* Breadcrumb */

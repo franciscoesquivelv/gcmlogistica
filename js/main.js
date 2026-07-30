@@ -1,5 +1,5 @@
 /**
- * GCM Logística — Main JavaScript
+ * GCM Logística: Main JavaScript
  * Handles: scroll animations, parallax, counters, nav, map, interactions
  */
 
@@ -122,7 +122,7 @@
       const scrollY = window.scrollY;
 
       if (heroBg) {
-        // Hero: moves up at 35% scroll speed — creates "depth" effect
+        // Hero: moves up at 35% scroll speed, creates "depth" effect
         const heroHeight = heroBg.closest('.hero').offsetHeight;
         if (scrollY < heroHeight * 1.5) {
           heroBg.style.transform = `translateY(${scrollY * 0.35}px) scale(1.12)`;
