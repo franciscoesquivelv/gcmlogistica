@@ -16,3 +16,7 @@ Cuando el usuario pida quitar una frase o fragmento específico, quitar exactame
 - Nada de tríadas de adjetivos ("rápido, eficiente, confiable").
 - Nada de frases que se asumen o son obvias (ej: "para que llegue como fue preparada", "en las mismas condiciones en que salieron").
 - Afirmar lo concreto, no negar lo que no se es.
+
+## Sin promesas de tiempo de respuesta
+
+No prometer tiempos de respuesta ni de servicio (ej: "en menos de 24 horas hábiles", "respuesta en X horas"). GCM no garantiza plazos de este tipo en su copy público. Esto aplica a toda mención: hero, sidebars de ruta, FAQs, schema JSON-LD.
