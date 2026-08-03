@@ -1477,6 +1477,11 @@ body::after {
   text-align: center;
 }
 .route-sidebar__email:hover { color: var(--gcm-white); }
+.route-sidebar__guides {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
 
 /* FAQ de ruta */
 .route-faq {
