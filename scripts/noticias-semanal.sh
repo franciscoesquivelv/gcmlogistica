@@ -13,20 +13,28 @@
 #      rigurosa de fuentes, redacción en voz humana, construcción de la
 #      página, autoverificación, commit y push), y registra el resultado.
 #
-# Esta carpeta (REPO_DIR) es de uso exclusivo de esta automatización.
-# Cada corrida hace `git reset --hard origin/main`: no dejes cambios sin
-# commitear ahí, se perderán.
+# IMPORTANTE: este script NUNCA lo ejecuta launchd directamente desde esta
+# copia versionada en Documents. macOS bloquea el acceso a Documents para
+# procesos lanzados en segundo plano (proteccion de privacidad TCC), asi que
+# launchd invoca un stub en ~/Library/Application Support/gcm-noticias-semanal/
+# (fuera de esa proteccion), que clona/actualiza el repo ahi y ejecuta ESTA
+# MISMA copia desde ese clon. Por eso REPO_DIR se calcula dinamicamente
+# relativo a la ubicacion real del script en cada corrida, nunca hardcodeado.
+#
+# Cada corrida hace `git reset --hard origin/main` sobre el clon donde se
+# esta ejecutando: no dejes cambios sin commitear en ese clon, se perderan.
+# El repo de trabajo normal en Documents no se toca.
 #
 # El prompt editorial vive por separado en prompt-noticias-semanal.txt
-# (mismo directorio). Editalo ahí si querés ajustar el proceso; este script
-# solo sustituye la fecha y lo invoca.
+# (mismo directorio, versionado). Editalo ahi si queres ajustar el proceso;
+# este script solo sustituye la fecha y lo invoca.
 # ============================================================================
 
 set -uo pipefail
 
 # ── Configuración ────────────────────────────────────────────────────────
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-REPO_DIR="/Users/franciscoesquivel/Documents/GitHub/gcmlogistica"
+REPO_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 CLAUDE_BIN="/Users/franciscoesquivel/.local/bin/claude"
 PROMPT_TEMPLATE="$SCRIPT_DIR/prompt-noticias-semanal.txt"
 STATE_DIR="$HOME/Library/Application Support/gcm-noticias-semanal"

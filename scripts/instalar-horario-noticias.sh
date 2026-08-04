@@ -28,13 +28,18 @@ MINUTE="${3:-0}"    # default: 0
 
 LABEL="com.gcm.noticias-semanal"
 PLIST_PATH="$HOME/Library/LaunchAgents/${LABEL}.plist"
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-WRAPPER_SCRIPT="$SCRIPT_DIR/noticias-semanal.sh"
+# IMPORTANTE: launchd invoca el stub en Application Support, NUNCA un script
+# dentro de ~/Documents directamente (macOS bloquea el acceso a Documents
+# para procesos lanzados en segundo plano; protección de privacidad TCC).
+# El stub clona/actualiza el repo fuera de Documents y desde ahí ejecuta la
+# lógica real (versionada en este mismo scripts/noticias-semanal.sh).
+WRAPPER_SCRIPT="$HOME/Library/Application Support/gcm-noticias-semanal/launch-stub.sh"
 LOG_FILE="$HOME/Library/Logs/gcm-noticias-semanal.log"
 LOG_ERR_FILE="$HOME/Library/Logs/gcm-noticias-semanal.err.log"
 
 if [ ! -x "$WRAPPER_SCRIPT" ]; then
   echo "ERROR: no se encontro o no es ejecutable: $WRAPPER_SCRIPT" >&2
+  echo "(el stub debe existir en Application Support antes de instalar el horario)" >&2
   exit 1
 fi
 
