@@ -41,6 +41,7 @@ STATE_DIR="$HOME/Library/Application Support/gcm-noticias-semanal"
 STATE_FILE="$STATE_DIR/last-run.txt"
 LOG_FILE="$HOME/Library/Logs/gcm-noticias-semanal.log"
 TMP_PROMPT="$STATE_DIR/prompt-actual.txt"
+LOCK_FILE="$STATE_DIR/run.lock"
 
 # Día objetivo de la edición semanal: 1=lunes ... 7=domingo (mismo criterio
 # que `date +%u`). Cambialo aquí si cambia el día de la semana; el horario
@@ -55,6 +56,32 @@ mkdir -p "$(dirname "$LOG_FILE")"
 log() {
   echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1" >> "$LOG_FILE"
 }
+
+# ── Bloqueo: nunca dos instancias a la vez sobre el mismo clon ─────────────
+# La noche del 3-4 de agosto de 2026 una corrida real (disparada por
+# RunAtLoad) y una prueba manual DRY_RUN se pisaron sobre el mismo clon:
+# el git reset/clean de la prueba borro archivos que la corrida real
+# todavia no habia commiteado. Salio bien de milagro. Este lock evita que
+# vuelva a pasar.
+#
+# Cuando launch-stub.sh invoca este script lo hace con `exec`, que preserva
+# el PID: el lock que ya escribio el stub tiene el mismo $$ que este
+# proceso, asi que encontrarnos con nuestro propio PID en el lock es
+# normal, no un conflicto. Solo abortamos si el PID del lock es DE OTRO
+# proceso vivo.
+if [ -f "$LOCK_FILE" ]; then
+  lock_pid=$(cat "$LOCK_FILE" 2>/dev/null | tr -d '[:space:]')
+  if [ "$lock_pid" = "$$" ]; then
+    : # el lock ya es nuestro (heredado del stub via exec), seguimos
+  elif [ -n "$lock_pid" ] && kill -0 "$lock_pid" 2>/dev/null; then
+    log "Ya hay otra corrida en curso (PID $lock_pid). Se aborta esta invocacion para no interferir."
+    exit 0
+  else
+    log "Lock huerfano encontrado (PID $lock_pid ya no existe). Se libera y se continua."
+  fi
+fi
+echo "$$" > "$LOCK_FILE"
+trap 'rm -f "$LOCK_FILE"' EXIT
 
 # ── Calcular la fecha objetivo más reciente (hoy o hacia atrás) ────────────
 today_dow=$(date +%u)   # 1..7
