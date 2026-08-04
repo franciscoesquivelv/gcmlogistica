@@ -101,6 +101,17 @@ sed \
   -e "s/__TARGET_DATE_LARGA__/$TARGET_DATE_LARGA/g" \
   "$PROMPT_TEMPLATE" > "$TMP_PROMPT"
 
+# Modo de prueba: DRY_RUN=1 ./noticias-semanal.sh corre todo (calculo de
+# fecha, idempotencia, git sync, armado del prompt) SIN invocar claude -p
+# ni gastar presupuesto ni tocar el state file. Util para validar el
+# mecanismo (por ejemplo el stub de launchd) sin publicar nada de verdad.
+if [ "${DRY_RUN:-0}" = "1" ]; then
+  log "DRY_RUN=1: se omite la invocacion real de claude -p."
+  log "Prompt final armado correctamente en $TMP_PROMPT ($(wc -l < "$TMP_PROMPT") lineas)."
+  log "=== Fin de la corrida (dry run, nada publicado, state file no tocado) ==="
+  exit 0
+fi
+
 log "Invocando claude -p (esto puede tardar varios minutos)..."
 
 OUTPUT=$(caffeinate -i -- "$CLAUDE_BIN" -p \
