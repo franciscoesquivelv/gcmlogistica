@@ -1,4 +1,11 @@
 User-agent: *
 Allow: /
 
+# Archivos internos del proyecto (tambien bloqueados por netlify.toml)
+Disallow: /scripts/
+Disallow: /seo/
+Disallow: /.claude/
+Disallow: /CLAUDE.md
+Disallow: /README.md
+
 Sitemap: https://gcm.com.sv/sitemap.xml
