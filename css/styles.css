@@ -4,41 +4,55 @@
    ═══════════════════════════════════════════════════════════════ */
 
 /* ─── FONTS ─────────────────────────────────────────────────── */
+/* Rutas absolutas desde la raiz del sitio. Antes eran relativas con dos
+   niveles de subida desde /css/, que quedan por encima de la raiz y solo
+   funcionan porque el navegador los recorta. La forma absoluta ademas
+   garantiza que la peticion coincida con las reglas de cache de
+   netlify.toml, incluida la carpeta cuyo nombre lleva un espacio: se
+   escribe codificada (%20) porque asi es como viaja en la peticion.
+   El .woff2 va primero y el .otf queda de respaldo para navegadores que
+   no lo soporten: pesa cerca de un 25 por ciento menos en la red que el
+   .otf comprimido por el CDN. */
 @font-face {
   font-family: 'CookConthic';
-  src: url('../../Cook Conthic/Font/WEB/CookConthic.woff2') format('woff2'),
-       url('../../Cook Conthic/Font/WEB/CookConthic.woff') format('woff');
+  src: url('/Cook%20Conthic/Font/WEB/CookConthic.woff2') format('woff2'),
+       url('/Cook%20Conthic/Font/WEB/CookConthic.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'AvenirLTPro';
-  src: url('../../avenir-lt-pro/AvenirLTProLight.otf') format('opentype');
+  src: url('/avenir-lt-pro/AvenirLTProLight.woff2') format('woff2'),
+       url('/avenir-lt-pro/AvenirLTProLight.otf') format('opentype');
   font-weight: 300;
   font-display: swap;
 }
 @font-face {
   font-family: 'AvenirLTPro';
-  src: url('../../avenir-lt-pro/AvenirLTProBook.otf') format('opentype');
+  src: url('/avenir-lt-pro/AvenirLTProBook.woff2') format('woff2'),
+       url('/avenir-lt-pro/AvenirLTProBook.otf') format('opentype');
   font-weight: 400;
   font-display: swap;
 }
 @font-face {
   font-family: 'AvenirLTPro';
-  src: url('../../avenir-lt-pro/AvenirLTProMedium.otf') format('opentype');
+  src: url('/avenir-lt-pro/AvenirLTProMedium.woff2') format('woff2'),
+       url('/avenir-lt-pro/AvenirLTProMedium.otf') format('opentype');
   font-weight: 500;
   font-display: swap;
 }
 @font-face {
   font-family: 'AvenirLTPro';
-  src: url('../../avenir-lt-pro/AvenirLTProHeavy.otf') format('opentype');
+  src: url('/avenir-lt-pro/AvenirLTProHeavy.woff2') format('woff2'),
+       url('/avenir-lt-pro/AvenirLTProHeavy.otf') format('opentype');
   font-weight: 700;
   font-display: swap;
 }
 @font-face {
   font-family: 'AvenirLTPro';
-  src: url('../../avenir-lt-pro/AvenirLTProBlack.otf') format('opentype');
+  src: url('/avenir-lt-pro/AvenirLTProBlack.woff2') format('woff2'),
+       url('/avenir-lt-pro/AvenirLTProBlack.otf') format('opentype');
   font-weight: 900;
   font-display: swap;
 }
@@ -984,7 +998,10 @@ body::before {
   padding-bottom: 48px;
   border-bottom: 1px solid var(--border);
 }
-.footer__logo { margin-bottom: 14px; }
+/* height: auto evita que el atributo height del HTML deforme el logo. Ese
+   atributo esta para que el navegador reserve el alto antes de descargar la
+   imagen y el pie no salte al cargarla. */
+.footer__logo { margin-bottom: 14px; height: auto; }
 .footer__tagline {
   font-family: var(--font-display);
   font-size: 18px;

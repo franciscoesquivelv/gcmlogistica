@@ -20,3 +20,8 @@
 # Environment
 .env
 .env.*
+
+# Marco de trabajo de los agentes del consejo. Es herramienta local, no
+# parte del sitio: nunca se versiona ni se publica. Ademas sus memorias
+# acumulan contexto de negocio que no debe quedar escrito en el repositorio.
+AGENTS/
