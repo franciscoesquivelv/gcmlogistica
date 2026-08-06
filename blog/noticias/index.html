@@ -14,7 +14,7 @@
     gtag('config', 'G-PSCC5LY01C');
   </script>
 
-  <title>Noticias del corredor | Logística Centroamérica–México · GCM Logística</title>
+  <title>Noticias del corredor Centroamérica–México | GCM Logística</title>
   <meta name="description" content="Resumen editorial de noticias que tocan la logística terrestre del corredor Centroamérica–México: aduanas, fronteras, comercio exterior y costos de operar.">
   <link rel="canonical" href="https://gcm.com.sv/blog/noticias/">
   <meta name="robots" content="index, follow, max-image-preview:large">
@@ -24,11 +24,55 @@
   <meta property="og:title" content="Noticias del corredor · Logística Centroamérica–México">
   <meta property="og:description" content="Resumen editorial de noticias que tocan la logística terrestre del corredor Centroamérica–México.">
   <meta property="og:image" content="https://gcm.com.sv/imagenes/og-gcm.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:locale" content="es_SV">
+  <meta property="og:site_name" content="GCM Logística">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Noticias del corredor · Logística Centroamérica–México">
+  <meta name="twitter:description" content="Resumen editorial de noticias que tocan la logística terrestre del corredor Centroamérica–México.">
+  <meta name="twitter:image" content="https://gcm.com.sv/imagenes/og-gcm.jpg">
 
   <link rel="icon" type="image/png" href="../../imagenes/favicon-dark.png" media="(prefers-color-scheme: dark)">
   <link rel="icon" type="image/png" href="../../imagenes/favicon.png" media="(prefers-color-scheme: light)">
   <link rel="stylesheet" href="../../css/styles.css">
+
+  <!-- Schema: hub de noticias. El ItemList reproduce las tarjetas visibles. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://gcm.com.sv/"},
+          {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://gcm.com.sv/blog/"},
+          {"@type": "ListItem", "position": 3, "name": "Noticias", "item": "https://gcm.com.sv/blog/noticias/"}
+        ]
+      },
+      {
+        "@type": "CollectionPage",
+        "@id": "https://gcm.com.sv/blog/noticias/",
+        "url": "https://gcm.com.sv/blog/noticias/",
+        "name": "Noticias del corredor",
+        "description": "Resumen editorial de noticias que tocan la logística terrestre del corredor Centroamérica–México: aduanas, fronteras, comercio exterior y costos de operar.",
+        "inLanguage": "es-SV",
+        "isPartOf": { "@id": "https://gcm.com.sv/#website" },
+        "publisher": { "@id": "https://gcm.com.sv/#business" },
+        "mainEntity": { "@id": "https://gcm.com.sv/blog/noticias/#listado" }
+      },
+      {
+        "@type": "ItemList",
+        "@id": "https://gcm.com.sv/blog/noticias/#listado",
+        "itemListElement": [
+          {"@type":"ListItem","position":1,"name":"México propone quitar la garantía aduanera al tránsito por el Corredor Interoceánico","url":"https://gcm.com.sv/blog/noticias/resumen-semanal-2026-08-03"}
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 

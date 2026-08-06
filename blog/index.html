@@ -24,11 +24,57 @@
   <meta property="og:title" content="Blog · Guías del corredor Centroamérica–México">
   <meta property="og:description" content="Guías operativas de transporte de carga terrestre en el corredor CA–México.">
   <meta property="og:image" content="https://gcm.com.sv/imagenes/og-gcm.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:locale" content="es_SV">
+  <meta property="og:site_name" content="GCM Logística">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Blog · Guías del corredor Centroamérica–México">
+  <meta name="twitter:description" content="Guías operativas de transporte de carga terrestre en el corredor CA–México.">
+  <meta name="twitter:image" content="https://gcm.com.sv/imagenes/og-gcm.jpg">
 
   <link rel="icon" type="image/png" href="../imagenes/favicon-dark.png" media="(prefers-color-scheme: dark)">
   <link rel="icon" type="image/png" href="../imagenes/favicon.png" media="(prefers-color-scheme: light)">
   <link rel="stylesheet" href="../css/styles.css">
+
+  <!-- Schema: hub del blog. El ItemList reproduce las tarjetas visibles. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://gcm.com.sv/"},
+          {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://gcm.com.sv/blog/"}
+        ]
+      },
+      {
+        "@type": "CollectionPage",
+        "@id": "https://gcm.com.sv/blog/",
+        "url": "https://gcm.com.sv/blog/",
+        "name": "Guías del corredor",
+        "description": "Guías operativas sobre transporte de carga terrestre en el corredor Centroamérica–México: rutas, fronteras, documentación, modalidades y cadena de frío.",
+        "inLanguage": "es-SV",
+        "isPartOf": { "@id": "https://gcm.com.sv/#website" },
+        "publisher": { "@id": "https://gcm.com.sv/#business" },
+        "mainEntity": { "@id": "https://gcm.com.sv/blog/#listado" }
+      },
+      {
+        "@type": "ItemList",
+        "@id": "https://gcm.com.sv/blog/#listado",
+        "itemListElement": [
+          {"@type":"ListItem","position":1,"name":"Noticias del corredor Centroamérica–México","url":"https://gcm.com.sv/blog/noticias/"},
+          {"@type":"ListItem","position":2,"name":"Cómo cruzar carga terrestre de Centroamérica a México","url":"https://gcm.com.sv/blog/transporte-carga-terrestre-centroamerica-mexico"},
+          {"@type":"ListItem","position":3,"name":"DUCA-T: la documentación del tránsito terrestre en Centroamérica","url":"https://gcm.com.sv/blog/duca-t-transito-terrestre-centroamerica"},
+          {"@type":"ListItem","position":4,"name":"Incoterms para transporte terrestre: guía para exportar por Centroamérica","url":"https://gcm.com.sv/blog/incoterms-transporte-terrestre-centroamerica"}
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 

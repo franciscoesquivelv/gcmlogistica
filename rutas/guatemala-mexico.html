@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-SV">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,12 +26,15 @@
   <meta property="og:image:height" content="630">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_SV">
+  <meta property="og:site_name" content="GCM Logística">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Flete Guatemala a México | GCM Logística">
   <meta name="twitter:description" content="Transporte de carga terrestre Guatemala–México. En la ruta más concurrida de CA, importa con quién trabajas. Trato directo. Cotiza hoy.">
   <meta name="twitter:image" content="https://gcm.com.sv/imagenes/og-gcm.jpg">
+
+  <meta name="robots" content="index, follow, max-image-preview:large">
 
   <!-- Canonical -->
   <link rel="canonical" href="https://gcm.com.sv/rutas/guatemala-mexico">
@@ -55,7 +58,11 @@
     },
     "description": "Transporte de carga terrestre Guatemala–México. En la ruta más concurrida de CA, importa con quién trabajas. Trato directo. Cotiza hoy.",
     "url": "https://gcm.com.sv/rutas/guatemala-mexico",
-    "serviceType": "Transporte de carga terrestre"
+    "serviceType": "Transporte de carga terrestre",
+    "areaServed": [
+      {"@type": "Country", "name": "Guatemala"},
+      {"@type": "Country", "name": "México"}
+    ]
   }
   </script>
 
@@ -89,6 +96,18 @@
           "text": "Es una de nuestras rutas con mayor frecuencia de operaci\u00f3n. Cu\u00e9ntenos cu\u00e1ndo necesita que salga su carga y ajustamos el programa. Si tiene embarques recurrentes, podemos establecer una frecuencia fija."
         }
       }
+    ]
+  }
+  </script>
+
+  <!-- Schema: BreadcrumbList, mismo texto que la miga visible -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "GCM Logística", "item": "https://gcm.com.sv/"},
+      {"@type": "ListItem", "position": 2, "name": "Guatemala → México", "item": "https://gcm.com.sv/rutas/guatemala-mexico"}
     ]
   }
   </script>
@@ -212,7 +231,7 @@
     <div class="container">
       <span class="route-cta-section__eyebrow">&iquest;Listo para mover su carga?</span>
       <h2 class="route-cta-section__title">Cotiza la ruta Guatemala → México.</h2>
-      <p class="route-cta-section__sub">Trato directo. Sin call centers. Su carga tiene un responsable con nombre.</p>
+      <p class="route-cta-section__sub">Trato directo. Su carga tiene un responsable con nombre.</p>
       <div class="route-cta-section__ctas">
         <a href="https://wa.me/50366931158?text=Hola%20GCM%2C%20quiero%20cotizar%20un%20flete%20de%20Guatemala%20a%20M%C3%A9xico." class="btn btn--primary" target="_blank" rel="noopener">Cotizar por WhatsApp</a>
         <a href="../#contacto" class="btn btn--ghost">Formulario de contacto</a>

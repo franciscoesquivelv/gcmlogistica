@@ -47,6 +47,12 @@
   status = 404
   force = true
 
+[[redirects]]
+  from = "/AGENTS/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
 # ─── Redirecciones 301: demanda heredada de TARIMAS → Onepack ───
 # El dominio gcm.com.sv era un sitio WordPress de tarimas (hasta Feb/Mar 2026).
 # Esas URLs hoy dan 404 pero Google aún las muestra. Las enviamos a Onepack
@@ -87,6 +93,97 @@
   status = 301
   force = true
 
+# ─── Canonicalizacion: la version .html redirige a la URL limpia ───
+# Netlify sirve tanto /rutas/x como /rutas/x.html, asi que cada pagina
+# respondia 200 en dos URLs (28 en vez de 14). Las canonicas ya apuntaban a la
+# limpia y ningun enlace interno usa .html, pero el duplicado seguia servible.
+# force = true es necesario: sin el, el archivo real en disco gana al redirect.
+# La regla de /index.html no afecta a "/" porque el match es sobre la ruta
+# pedida, y "/" nunca se pide como "/index.html".
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/rutas/el-salvador-mexico.html"
+  to = "/rutas/el-salvador-mexico"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/rutas/guatemala-mexico.html"
+  to = "/rutas/guatemala-mexico"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/rutas/honduras-mexico.html"
+  to = "/rutas/honduras-mexico"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/rutas/guatemala-el-salvador.html"
+  to = "/rutas/guatemala-el-salvador"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/rutas/guatemala-honduras.html"
+  to = "/rutas/guatemala-honduras"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/rutas/el-salvador-honduras.html"
+  to = "/rutas/el-salvador-honduras"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/rutas/honduras-nicaragua.html"
+  to = "/rutas/honduras-nicaragua"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/index.html"
+  to = "/blog/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/transporte-carga-terrestre-centroamerica-mexico.html"
+  to = "/blog/transporte-carga-terrestre-centroamerica-mexico"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/duca-t-transito-terrestre-centroamerica.html"
+  to = "/blog/duca-t-transito-terrestre-centroamerica"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/incoterms-transporte-terrestre-centroamerica.html"
+  to = "/blog/incoterms-transporte-terrestre-centroamerica"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/noticias/index.html"
+  to = "/blog/noticias/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/noticias/resumen-semanal-2026-08-03.html"
+  to = "/blog/noticias/resumen-semanal-2026-08-03"
+  status = 301
+  force = true
+
 [[headers]]
   for = "/*"
   [headers.values]
@@ -96,3 +193,31 @@
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
     Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://script.google.com https://script.googleusercontent.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com; frame-ancestors 'none';"
+
+# ═══════════════════════════════════════════════════════════════════════
+# CACHE DE ESTATICOS
+# ═══════════════════════════════════════════════════════════════════════
+# Netlify sirve todo con "public, max-age=0, must-revalidate": cada visita
+# revalida hasta las fuentes, que no cambian nunca. El HTML se deja como
+# esta (debe revalidar siempre) y tambien css/ y js/, porque sus nombres no
+# llevan hash y un cache largo dejaria clientes con la version vieja tras
+# un deploy.
+[[headers]]
+  for = "/avenir-lt-pro/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/Cook Conthic/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/imagenes/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000, stale-while-revalidate=86400"
+
+[[headers]]
+  for = "/favicons/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000, stale-while-revalidate=86400"
