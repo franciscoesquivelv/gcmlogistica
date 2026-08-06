@@ -116,7 +116,17 @@ D. Agrega la nueva URL a sitemap.xml siguiendo el formato ya usado, con changefr
 
 ## FASE 7 - Autoverificacion antes de publicar (obligatoria)
 
-Antes de commit, verifica lo siguiente y corrige cualquier falla. Primero, que el caracter em-dash literal no aparezca en ningun archivo nuevo. Segundo, que tampoco aparezca su forma escapada tipo unicode. Tercero, que no aparezcan las frases nuestras unidades, nuestra flota, nuestros conductores, nuestros camiones ni flota propia. Cuarto, que no aparezcan frases de promesa de tiempo tipo 24 horas, en menos de, o respondemos en. Quinto, que el JSON-LD sea JSON valido. Sexto, si hay FAQPage, que el texto visible coincida exacto con el texto del schema. Septimo, confirma que la Fase 4 realmente se completo con un sub-agente Vera real (no un autochequeo tuyo) y que el veredicto fue APROBADO o que dejaste constancia de la objecion sin resolver.
+PRIMERO, y es obligatorio: corre el verificador del proyecto sobre lo que vas a publicar.
+
+  git add -A
+  ./scripts/verificar-antes-de-publicar.sh --staged
+
+Ese script es la autoridad, no tu criterio. Verifica las reglas duras del proyecto (como se describe a GCM, em-dash literal y escapado, promesas de tiempo, archivos internos que quedarian servidos). Si sale con codigo distinto de cero, NO publiques: lee lo que reporta, corrige el TEXTO del articulo, y volve a correrlo hasta que pase. Nunca modifiques el verificador para que pase, y nunca uses --no-verify.
+
+DESPUES, verifica a mano lo que el script no puede comprobar solo:
+Primero, que el JSON-LD del articulo nuevo sea JSON valido.
+Segundo, si incluiste FAQPage, que el texto visible coincida exacto con el texto del schema.
+Tercero, que la Fase 4 realmente se completo con un sub-agente Vera real (no un autochequeo tuyo) y que el veredicto fue APROBADO, o que dejaste constancia de la objecion sin resolver.
 
 ## FASE 8 - Publicar
 

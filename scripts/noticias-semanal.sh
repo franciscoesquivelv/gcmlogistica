@@ -122,6 +122,15 @@ git checkout main >> "$LOG_FILE" 2>&1
 git reset --hard origin/main >> "$LOG_FILE" 2>&1
 git clean -fd >> "$LOG_FILE" 2>&1
 
+# Los hooks de git no se clonan, asi que este clon dedicado no los tiene.
+# Se reinstalan en cada corrida para que el guard bloquee cualquier commit
+# de la automatizacion que viole las reglas del proyecto. Es idempotente.
+if [ -x "$REPO_DIR/scripts/instalar-guard.sh" ]; then
+  "$REPO_DIR/scripts/instalar-guard.sh" >> "$LOG_FILE" 2>&1 \
+    && log "Guard de pre-commit instalado en el clon dedicado." \
+    || log "AVISO: no se pudo instalar el guard de pre-commit."
+fi
+
 # ── Armar el prompt final sustituyendo la fecha en la plantilla ────────────
 sed \
   -e "s/__TARGET_DATE__/$TARGET_DATE/g" \
