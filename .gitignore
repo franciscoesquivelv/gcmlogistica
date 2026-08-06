@@ -25,3 +25,7 @@
 # parte del sitio: nunca se versiona ni se publica. Ademas sus memorias
 # acumulan contexto de negocio que no debe quedar escrito en el repositorio.
 AGENTS/
+
+# Worktrees de sesiones de trabajo. Son copias completas del sitio en otras
+# ramas: versionarlas duplicaria cada pagina dentro del repositorio.
+.claude/worktrees/
