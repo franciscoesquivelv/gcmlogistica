@@ -1389,7 +1389,13 @@ body::after {
   gap: 24px 40px;
   max-width: 900px;
   margin: 0 auto;
-  padding: 0 var(--gutter);
+  /* Se quita "padding: 0 var(--gutter)": --gutter no existe en el proyecto,
+     asi que la declaracion era invalida y resolvia a 0. En escritorio ese 0
+     es correcto, porque max-width:900px con margin auto ya deja aire de
+     sobra a los lados. El margen lateral solo hace falta cuando la pantalla
+     es mas angosta que ese maximo, y se aplica en el bloque movil del final
+     del archivo. */
+  padding: 0;
 }
 .route-fact__label {
   font-family: var(--font-mono);
@@ -1419,6 +1425,14 @@ body::after {
 @media (max-width: 900px) {
   .route-content .container { grid-template-columns: 1fr; gap: 48px; }
 }
+/* Un item de rejilla trae min-width:auto, o sea que no baja del ancho de su
+   contenido mas ancho. La tabla del articulo declara min-width:560px, asi
+   que estiraba toda la pista 1fr y con ella cada parrafo: en un telefono de
+   375px el texto se maquetaba a 582px y se cortaba, sin poder desplazarse
+   porque body lleva overflow-x:hidden. Con min-width:0 la pista respeta el
+   ancho real y la tabla se desplaza dentro de .table-wrap, que ya tenia
+   overflow-x:auto justamente para eso. */
+.route-content__main { min-width: 0; }
 .route-content__main h2 {
   font-family: var(--font-display);
   font-size: clamp(22px, 3vw, 30px);
@@ -1869,3 +1883,28 @@ body::after {
   justify-content: center;
 }
 .article-ol li strong { color: var(--gcm-white); }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   MOVIL
+   ═══════════════════════════════════════════════════════════════════════
+   Todo el CSS de telefono vive aqui, al final del archivo y dentro de
+   media queries max-width. Las dos condiciones importan:
+
+   - Al final, porque el bloque RESPONSIVE original termina en la linea 1159
+     y el archivo sigue 700 lineas mas. Una regla movil escrita alli arriba
+     la derrota cualquier regla posterior por orden de fuente, sin ningun
+     error que lo avise.
+   - En max-width, porque la hoja esta escrita desktop-first: el escritorio
+     es el caso base y nada de lo que se declare aqui adentro puede
+     alcanzarlo. Es el unico aislamiento confiable que tiene el proyecto.
+
+   Verificacion: tras cada cambio, las capturas de 768, 1280 y 1440 tienen
+   que dar cero pixeles de diferencia (arnes en Documents/GCM-auditoria).
+   ═══════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 900px) {
+  /* La barra de datos de ruta ocupa el ancho completo cuando la pantalla es
+     mas angosta que su max-width, y quedaba pegada al borde mientras el
+     resto de la pagina respetaba el margen lateral. */
+  .route-facts__grid { padding: 0 var(--pad-x); }
+}
