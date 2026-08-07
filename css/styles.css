@@ -1908,3 +1908,47 @@ body::after {
      resto de la pagina respetaba el margen lateral. */
   .route-facts__grid { padding: 0 var(--pad-x); }
 }
+
+@media (max-width: 768px) {
+  /* ─── Tipografia de lectura ────────────────────────────────────────
+     Medido antes del cambio a 375px: cuerpo 15px en las rutas y 16px en
+     los articulos, con los titulos heredando la interlinea 1.65 del
+     cuerpo, y la etiqueta de datos en 10px.
+
+     Los valores de abajo salen del informe de evidencia: 17px de cuerpo
+     (iOS usa 17pt por defecto y Material 16sp), interlinea de 1.5 a 1.6
+     en prosa y de 1.15 a 1.25 en titulos, y separacion entre parrafos de
+     2em, que es lo que da el respiro que hoy no tienen. */
+  .route-content__main p,
+  .route-content__main li {
+    font-size: 17px;
+    line-height: 1.6;
+  }
+  .route-content__main p { margin-bottom: 2em; }
+  .article-standfirst { font-size: 18px; line-height: 1.55; }
+
+  /* Un titulo con interlinea de cuerpo se parte en dos lineas separadas y
+     deja de leerse como un bloque. En escritorio no se parten y por eso
+     nunca se noto. */
+  .route-content__main h2 {
+    font-size: 24px;
+    line-height: 1.2;
+    margin-top: 1.8em;
+    margin-bottom: 0.6em;
+  }
+  .route-content__main h3 {
+    font-size: 20px;
+    line-height: 1.3;
+    margin-top: 1.6em;
+  }
+
+  /* Jerarquia invertida: .section-title resolvia su clamp a 36px mientras
+     el h1 de ruta y de articulo queda en 32px, o sea que un h2 le ganaba
+     al h1 por 12,5%. En escritorio ambos resuelven a 58 y no se nota.
+     26px ademas alinea con la escala recomendada de h2 en telefono. */
+  .section-title { font-size: 26px; }
+
+  /* 11px es el minimo absoluto de texto legible; esta etiqueta estaba
+     en 10px. */
+  .route-fact__label { font-size: 11px; }
+}
