@@ -74,10 +74,15 @@ FUENTES ACEPTABLES (confirmar cada una con WebSearch y WebFetch, nunca citar de
 memoria):
 
 - Agencias internacionales: Reuters, AP, AFP, EFE, Bloomberg.
-- Prensa establecida de la region: La Prensa Grafica, El Diario de Hoy, El Faro (El
-  Salvador); Prensa Libre, La Hora (Guatemala); La Prensa, El Heraldo (Honduras); La
-  Prensa, Confidencial (Nicaragua); La Nacion, La Republica (Costa Rica); La Estrella
-  de Panama.
+- Prensa establecida de la region: La Prensa Grafica, El Diario de Hoy, Diario El
+  Mundo, El Faro (El Salvador); Prensa Libre, La Hora (Guatemala); La Prensa, El
+  Heraldo (Honduras); La Prensa, Confidencial (Nicaragua); La Nacion, La Republica
+  (Costa Rica); La Estrella de Panama.
+
+**Independencia real, no dos titulos de la misma casa.** Dos medios cuentan como
+fuentes independientes solo si tienen redaccion distinta. En particular,
+elsalvador.com y El Diario de Hoy son la misma casa editorial: juntos valen por una.
+Ante la duda sobre si dos medios comparten redaccion, tratarlos como uno solo.
 - Fuentes institucionales primarias: SIECA, COMIECO, bancos centrales, ministerios de
   economia, hacienda o comercio, aduanas oficiales (DGA, SAT, Aduanas HN), Banco
   Mundial, BID, FMI, OMC.
