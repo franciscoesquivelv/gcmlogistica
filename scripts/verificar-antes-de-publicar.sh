@@ -45,7 +45,7 @@ REVISABLES=$(echo "$ARCHIVOS" | grep -E '\.(html|css|js|xml|txt|md|json|toml|sh)
 
 # Archivos que DEFINEN las reglas y por lo tanto citan las frases prohibidas
 # como ejemplo. Se excluyen de los chequeos de redaccion, nunca del chequeo 1.
-NORMATIVOS='^(CLAUDE\.md|README\.md|seo/|scripts/prompt-noticias-semanal\.txt|scripts/verificar-antes-de-publicar\.sh)'
+NORMATIVOS='^(CLAUDE\.md|README\.md|seo/|scripts/playbook-articulo-semanal\.md|scripts/verificar-antes-de-publicar\.sh)'
 
 # Lo que de verdad llega al visitante del sitio.
 DEL_SITIO=$(echo "$REVISABLES" | grep -E '\.(html|css|js|xml)$' | grep -vE "$NORMATIVOS" || true)
