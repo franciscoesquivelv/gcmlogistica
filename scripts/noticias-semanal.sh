@@ -114,6 +114,18 @@ if [ ! -f "$PROMPT_TEMPLATE" ]; then
   exit 1
 fi
 
+# ── Comprobar que hay red antes de gastar nada ─────────────────────────────
+# El lunes 10 de agosto de 2026 el agente disparo a las 19:09 sin conexion:
+# el git fetch fallo por DNS, y aun asi el script siguio adelante e invoco
+# claude -p, que estuvo 27 minutos intentando alcanzar la API antes de
+# rendirse. Sin red no hay nada que hacer, y conviene salir rapido para que
+# el reintento posterior encuentre el terreno limpio.
+if ! curl -sf --max-time 15 -o /dev/null https://api.anthropic.com/v1/models \
+   && ! curl -sf --max-time 15 -o /dev/null https://github.com; then
+  log "Sin conexion a internet. Se sale sin marcar la semana; se reintentara en la proxima corrida."
+  exit 0
+fi
+
 # ── Dejar el repo limpio y actualizado con origin/main ─────────────────────
 cd "$REPO_DIR" || { log "ERROR: no se pudo entrar a $REPO_DIR"; exit 1; }
 
