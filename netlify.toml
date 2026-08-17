@@ -173,6 +173,12 @@
   force = true
 
 [[redirects]]
+  from = "/blog/cadena-de-frio-transporte-terrestre-centroamerica-mexico.html"
+  to = "/blog/cadena-de-frio-transporte-terrestre-centroamerica-mexico"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/blog/noticias/index.html"
   to = "/blog/noticias/"
   status = 301
