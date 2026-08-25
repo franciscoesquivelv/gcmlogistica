@@ -204,7 +204,7 @@ de estructura. Adaptar:
 > contrastando las fuentes citadas al pie de cada articulo mediante un proceso de
 > verificacion automatizado. La informacion proveniente de fuentes externas puede
 > actualizarse, corregirse o quedar desactualizada con el tiempo. Si identifica una
-> imprecision, puede reportarla a ventas@gcm.com.sv. Las correcciones se revisan y
+> imprecision, puede reportarla a logistica@gcm.com.sv. Las correcciones se revisan y
 > publican cuando corresponde.
 
 - **Enlaces internos naturales:** si la noticia se relaciona con una ruta especifica o
